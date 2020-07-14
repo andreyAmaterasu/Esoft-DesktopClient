@@ -20,22 +20,19 @@ namespace esoft.Database
                 if (typeof(T) == typeof(Useraccount)) {
                     return db.Useraccount.ToList() as List<T>;
                 }
+                else if (typeof(T) == typeof(Manager)) {
+                    return db.Manager.ToList() as List<T>;
+                }
             }
             return null;
         }
 
-        //public static Useraccount GetUserWithLogin(string login) {
-        //    using (esoftContext db = new esoftContext()) {
-        //        return db.Useraccount.Where(u => u.Login == login).FirstOrDefault();
-        //    }
-        //}
-
         public static T GetUserWithLogin<T>(string login) where T : class {
             using (esoftContext db = new esoftContext()) {
-                if (typeof(T) == typeof(Manager))
-                    return db.Manager.Where(m => m.Login == login).FirstOrDefault() as T;
-                else if (typeof(T) == typeof(Useraccount))
+                if (typeof(T) == typeof(Useraccount))
                     return db.Useraccount.Where(m => m.Login == login).FirstOrDefault() as T;
+                else if (typeof(T) == typeof(Manager))
+                    return db.Manager.Where(m => m.Login == login).FirstOrDefault() as T;
             }
             return null;
         }

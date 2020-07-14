@@ -40,14 +40,12 @@ namespace esoft.ViewModel
         }
 
         public MainPageViewModel() {
-            currentPage = new View.TasksPage();
+            currentPage = new View.ManagersPage();
+            DataContextForPages(new ManagersPageViewModel());
         }
 
-        public TasksPageViewModel DataContextForPages {
-            set {
-                currentPage.DataContext = value;
-                OnPropertyChanged("DataContextForPages");
-            }
+        public void DataContextForPages<T>(T dataContext) {
+            currentPage.DataContext = dataContext;
         }
     }
 }

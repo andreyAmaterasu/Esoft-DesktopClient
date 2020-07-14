@@ -62,14 +62,14 @@ namespace esoft.View
                       if (useraccount != null && useraccount.Login == Login && useraccount.Password == Password) {
                           MainPage mainPage = new MainPage();
                           MainPageViewModel mainPageViewModel = new MainPageViewModel();
-                          TasksPageViewModel tasksPageViewModel = new TasksPageViewModel();
+                          //TasksPageViewModel tasksPageViewModel = new TasksPageViewModel();
 
                           mainPageViewModel.Login = Login;
 
-                          tasksPageViewModel.Login = Login;
+                          //tasksPageViewModel.Login = Login;
 
                           
-                          mainPageViewModel.DataContextForPages = tasksPageViewModel;
+                          //mainPageViewModel.DataContextForPages(tasksPageViewModel);
                           mainPage.DataContext = mainPageViewModel;
 
                           NavigationService.Navigate(mainPage);
