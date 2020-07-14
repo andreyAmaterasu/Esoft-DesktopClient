@@ -58,22 +58,20 @@ namespace esoft.View
             get {
                 return entryCommand ??
                   (entryCommand = new RelayCommand(obj => {
-                      Useraccount useraccount = Database.DatabaseManager.GetUserWithLogin(Login);
+                      Useraccount useraccount = Database.DatabaseManager.GetUserWithLogin<Useraccount>(Login);
                       if (useraccount != null && useraccount.Login == Login && useraccount.Password == Password) {
-                          ShowMassage = false;
                           MainPage mainPage = new MainPage();
-                          MainViewModel mainViewModel = new MainViewModel();
+                          MainPageViewModel mainPageViewModel = new MainPageViewModel();
                           TasksPageViewModel tasksPageViewModel = new TasksPageViewModel();
 
-                          mainViewModel.Login = Login;
-                          mainViewModel.Pass = password;
+                          mainPageViewModel.Login = Login;
 
                           tasksPageViewModel.Login = Login;
-                          tasksPageViewModel.Passw = Password;
 
-                          mainViewModel.CurrentPage = new View.TasksPage();
-                          mainViewModel.DataContextForPages = tasksPageViewModel;
-                          mainPage.DataContext = mainViewModel;
+                          
+                          mainPageViewModel.DataContextForPages = tasksPageViewModel;
+                          mainPage.DataContext = mainPageViewModel;
+
                           NavigationService.Navigate(mainPage);
                       }
                       else {

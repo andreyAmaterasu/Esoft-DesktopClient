@@ -15,7 +15,7 @@ namespace esoft.Database
             }
         }
 
-        public static List<T> Load<T>() {
+        public static List<T> GetUsersWithType<T>() {
             using (esoftContext db = new esoftContext()) {
                 if (typeof(T) == typeof(Useraccount)) {
                     return db.Useraccount.ToList() as List<T>;
@@ -24,10 +24,20 @@ namespace esoft.Database
             return null;
         }
 
-        public static Useraccount GetUserWithLogin(string login) {
+        //public static Useraccount GetUserWithLogin(string login) {
+        //    using (esoftContext db = new esoftContext()) {
+        //        return db.Useraccount.Where(u => u.Login == login).FirstOrDefault();
+        //    }
+        //}
+
+        public static T GetUserWithLogin<T>(string login) where T : class {
             using (esoftContext db = new esoftContext()) {
-                return db.Useraccount.Where(u => u.Login == login).FirstOrDefault();
+                if (typeof(T) == typeof(Manager))
+                    return db.Manager.Where(m => m.Login == login).FirstOrDefault() as T;
+                else if (typeof(T) == typeof(Useraccount))
+                    return db.Useraccount.Where(m => m.Login == login).FirstOrDefault() as T;
             }
+            return null;
         }
 
         public static void Edit<T>(T obj) {

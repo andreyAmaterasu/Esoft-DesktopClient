@@ -1,4 +1,4 @@
-﻿<Page Background="Red" x:Class="esoft.View.TasksPage"
+﻿<Page Background="#f3f4f5" x:Class="esoft.View.TasksPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
