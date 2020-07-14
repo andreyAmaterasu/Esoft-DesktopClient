@@ -19,7 +19,7 @@ namespace esoft.ViewModel
                 OnPropertyChanged("CurrentPage");
             }
         }
-        public MainViewModel DataContextForPages {
+        public TasksPageViewModel DataContextForPages {
             set {
                 currentPage.DataContext = value;
                 OnPropertyChanged("DataContextForPages");

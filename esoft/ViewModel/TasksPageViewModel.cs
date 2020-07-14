@@ -17,11 +17,11 @@ namespace esoft.ViewModel
                 OnPropertyChanged("Login");
             }
         }
-        public string Pass {
+        public string Passw {
             get { return password; }
             set {
                 password = value;
-                OnPropertyChanged("Pass");
+                OnPropertyChanged("Passw");
             }
         }
 

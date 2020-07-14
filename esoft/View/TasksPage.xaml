@@ -14,6 +14,6 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="{Binding Login}" />
-        <TextBlock Grid.Row="1" Text="{Binding Pass}" />
+        <TextBlock Grid.Row="1" Text="{Binding Passw}" />
     </Grid>
 </Page>

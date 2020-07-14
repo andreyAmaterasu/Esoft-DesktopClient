@@ -63,10 +63,16 @@ namespace esoft.View
                           ShowMassage = false;
                           MainPage mainPage = new MainPage();
                           MainViewModel mainViewModel = new MainViewModel();
+                          TasksPageViewModel tasksPageViewModel = new TasksPageViewModel();
+
                           mainViewModel.Login = Login;
                           mainViewModel.Pass = password;
+
+                          tasksPageViewModel.Login = Login;
+                          tasksPageViewModel.Passw = Password;
+
                           mainViewModel.CurrentPage = new View.TasksPage();
-                          mainViewModel.DataContextForPages = mainViewModel;
+                          mainViewModel.DataContextForPages = tasksPageViewModel;
                           mainPage.DataContext = mainViewModel;
                           NavigationService.Navigate(mainPage);
                       }
