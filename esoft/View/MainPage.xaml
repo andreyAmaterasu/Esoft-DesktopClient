@@ -21,9 +21,8 @@
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0" Source="pack://application:,,,/Image/logo.png" HorizontalAlignment="Center" Height="70" />
             <StackPanel Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Style="{StaticResource TabButton}" Height="40" Width="200" Margin="15" Content="Задачи" Command="{Binding EntryCommand}" />
-                <Button Style="{StaticResource TabButton}" Height="40" Width="200" Margin="15" Content="Исполнители" Command="{Binding EntryCommand}" />
-                <Button Style="{StaticResource TabButton}" Height="40" Width="200" Margin="15" Content="Менеджеры" Command="{Binding EntryCommand}" />
+                <Button Style="{StaticResource TabButton}" Height="40" Width="200" Margin="15" Content="Задачи" Command="{Binding ToTasks}" />
+                <Button Style="{StaticResource TabButton}" Height="40" Width="200" Margin="15" Content="Исполнители" Command="{Binding ToPerformer}" />
             </StackPanel>
             <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal">

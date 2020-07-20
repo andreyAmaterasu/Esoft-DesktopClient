@@ -15,13 +15,13 @@ using System.Windows.Shapes;
 namespace esoft.View
 {
     /// <summary>
-    /// Логика взаимодействия для ManagersPage.xaml
+    /// Логика взаимодействия для PerformersPage.xaml
     /// </summary>
-    public partial class ManagersPage : Page
+    public partial class PerformersPage : Page
     {
-        public ManagersPage() {
+        public PerformersPage() {
             InitializeComponent();
-            DataContext = new ManagersPageViewModel();
+            DataContext = new PerformersPageViewModel();
         }
     }
 }

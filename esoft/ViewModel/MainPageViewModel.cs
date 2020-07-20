@@ -31,17 +31,36 @@ namespace esoft.ViewModel
         
         }
 
+        private RelayCommand toPerformer;
+        public RelayCommand ToPerformer {
+            get {
+                return toPerformer ??
+                    (toPerformer = new RelayCommand(obj => {
+                        CurrentPage = new View.PerformersPage();
+                        DataContextForPages(new PerformersPageViewModel());
+                    }));
+            }
+        }
+
+        private RelayCommand toTasks;
+        public RelayCommand ToTasks {
+            get {
+                return toTasks ??
+                    (toTasks = new RelayCommand(obj => {
+                        CurrentPage = new View.TasksPage();
+                        TasksPageViewModel tasksPageContext = new TasksPageViewModel();
+                        tasksPageContext.Login = Login;
+                        DataContextForPages(tasksPageContext);
+                    }));
+            }
+        }
+
         public Page CurrentPage {
             get { return currentPage; }
             set {
                 currentPage = value;
                 OnPropertyChanged("CurrentPage");
             }
-        }
-
-        public MainPageViewModel() {
-            currentPage = new View.ManagersPage();
-            DataContextForPages(new ManagersPageViewModel());
         }
 
         public void DataContextForPages<T>(T dataContext) {

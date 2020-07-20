@@ -23,6 +23,9 @@ namespace esoft.Database
                 else if (typeof(T) == typeof(Manager)) {
                     return db.Manager.ToList() as List<T>;
                 }
+                else if (typeof(T) == typeof(Performer)) {
+                    return db.Performer.ToList() as List<T>;
+                }
             }
             return null;
         }
@@ -33,6 +36,8 @@ namespace esoft.Database
                     return db.Useraccount.Where(m => m.Login == login).FirstOrDefault() as T;
                 else if (typeof(T) == typeof(Manager))
                     return db.Manager.Where(m => m.Login == login).FirstOrDefault() as T;
+                else if (typeof(T) == typeof(Performer))
+                    return db.Performer.Where(p => p.Login == login).FirstOrDefault() as T;
             }
             return null;
         }
