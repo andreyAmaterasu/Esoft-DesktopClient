@@ -11,11 +11,17 @@
     <Grid>
         <!--<TextBlock Grid.Row="1" Text="Count:" />
         <TextBlock Grid.Row="0" Text="{Binding Firstname}" />-->
-        <ListBox ItemsSource="{Binding Path=Performers}" VerticalAlignment="Top" BorderThickness="0" Background="Transparent" Margin="5">
+        <ListBox ItemsSource="{Binding Path=Performers}" VerticalAlignment="Top" BorderThickness="0" 
+                 Background="Transparent" Margin="10" HorizontalContentAlignment="Stretch">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="{x:Type ListBoxItem}">
-                    <Setter Property="Background" Value="LightBlue" />
-                    <Setter Property="Margin" Value="5" />
+                    <Setter Property="Background" Value="LightGray" />
+                    <Setter Property="Margin" Value="10" />
+                    <Style.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Style.Resources>
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.ItemsPanel>
@@ -26,17 +32,18 @@
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Height="100px">
+                    <Grid Height="70px" Margin="10px">
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
                         </Grid.RowDefinitions>
-                        <TextBlock Text="{Binding LastnamePerformer}" Grid.Row="0" />
-                        <TextBlock Text="{Binding FirstnamePerformer}" Grid.Row="1" />
-                        <TextBlock Text="{Binding LastnameManager}" Grid.Row="2" />
-                        <TextBlock Text="{Binding FirstnameManager}" Grid.Row="3" />
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Performers}" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" FontSize="16pt" Foreground="#37474f" />
+                        <TextBlock Text="{Binding Grade}" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" FontSize="10pt" Foreground="#37474f" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Managers}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="10pt" Foreground="#546e7a" VerticalAlignment="Bottom" />
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

@@ -24,14 +24,9 @@ namespace esoft.ViewModel
                 List<Manager> managers = db.Manager.ToList();
 
                 var result = performers.Join(managers, p => p.Manager, m => m.Login, (p, m) => new {
-                    LastnamePerformer = p.Lastname,
-                    FirstnamePerformer = p.Firstname,
-                    PatronymicPerformer = p.Patronymic,
+                    Performers = $"{p.Lastname} {p.Firstname} {p.Patronymic}",
                     Grade = p.Grade,
-                    LastnameManager = m.Lastname,
-                    FirstnameManager = m.Firstname,
-                    PatronymicManager = m.Patronymic
-
+                    Managers = $"Менеджер: {m.Lastname} {m.Firstname} {m.Patronymic}"
                 }).ToList();
 
                 return result;
