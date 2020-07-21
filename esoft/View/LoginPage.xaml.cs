@@ -58,7 +58,7 @@ namespace esoft.View
             get {
                 return entryCommand ??
                   (entryCommand = new RelayCommand(obj => {
-                      Useraccount useraccount = Database.DatabaseManager.GetUserWithLogin<Useraccount>(Login);
+                      Useraccount useraccount = (Useraccount)Database.DatabaseManager.GetUserWithLogin<Useraccount>(Login);
                       if (useraccount != null && useraccount.Login == Login && useraccount.Password == Password) {
                           MainPage mainPage = new MainPage();
                           MainPageViewModel mainPageViewModel = new MainPageViewModel();

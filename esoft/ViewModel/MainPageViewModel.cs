@@ -12,7 +12,6 @@ namespace esoft.ViewModel
     {
         private string login;
         private Page currentPage;
-
         public string Login {
             get { return login; }
             set {
@@ -22,13 +21,27 @@ namespace esoft.ViewModel
         }
 
         public string Firstname {
-            get { return Database.DatabaseManager.GetUserWithLogin<Manager>(Login).Firstname; }
-
+            get {
+                var user = Database.DatabaseManager.GetUserWithLogin<Performer>(login);
+                if (user != null) {
+                    return user.Firstname;
+                }
+                else {
+                    return Database.DatabaseManager.GetUserWithLogin<Manager>(login).Firstname;
+                }
+            }
         }
 
         public string Lastname {
-            get { return Database.DatabaseManager.GetUserWithLogin<Manager>(Login).Lastname; }
-        
+            get {
+                var user = Database.DatabaseManager.GetUserWithLogin<Performer>(login);
+                if (user != null) {
+                    return user.Lastname;
+                }
+                else {
+                    return Database.DatabaseManager.GetUserWithLogin<Manager>(login).Lastname;
+                }
+            }
         }
 
         private RelayCommand toPerformer;
