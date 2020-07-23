@@ -42,6 +42,12 @@ namespace esoft.Database
             return null;
         }
 
+        public static List<Performer> GetPerformersOfManager(string login) {
+            using (esoftContext db = new esoftContext()) {
+                return db.Performer.Where(p => p.Manager == login).ToList();
+            }
+        }
+
         public static void Edit<T>(T obj) {
             using (esoftContext db = new esoftContext()) {
                 if (typeof(T) == typeof(Useraccount)) {

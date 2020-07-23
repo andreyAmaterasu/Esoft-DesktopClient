@@ -61,7 +61,7 @@ namespace esoft.ViewModel
                 return toTasks ??
                     (toTasks = new RelayCommand(obj => {
                         CurrentPage = new View.TasksPage();
-                        TasksPageViewModel tasksPageContext = new TasksPageViewModel();
+                        TasksPageViewModel tasksPageContext = new TasksPageViewModel(Login);
                         tasksPageContext.Login = Login;
                         DataContextForPages(tasksPageContext);
                     }));

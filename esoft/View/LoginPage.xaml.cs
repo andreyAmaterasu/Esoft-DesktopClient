@@ -65,8 +65,8 @@ namespace esoft.View
                           mainPageViewModel.Login = Login;
                           mainPage.DataContext = mainPageViewModel;
                           mainPageViewModel.CurrentPage = new View.TasksPage();
-                          TasksPageViewModel tasksPageViewModel = new TasksPageViewModel();
-                          tasksPageViewModel.Login = Login;
+                          TasksPageViewModel tasksPageViewModel = new TasksPageViewModel(Login);
+                          //tasksPageViewModel.Login = Login;
                           mainPageViewModel.DataContextForPages(tasksPageViewModel);
 
                           NavigationService.Navigate(mainPage);

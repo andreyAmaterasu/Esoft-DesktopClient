@@ -21,7 +21,7 @@ namespace esoft.View
     {
         public TasksPage() {
             InitializeComponent();
-            DataContext = new TasksPageViewModel();
+            
         }
     }
 }
