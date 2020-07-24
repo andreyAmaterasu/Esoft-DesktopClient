@@ -29,6 +29,7 @@ namespace esoft.ViewModel
             get { return selectedPerformer; }
             set {
                 selectedPerformer = value;
+                Performers = PerformerManager();
                 OnPropertyChanged("SelectedPerformer");
             }
         }
@@ -37,7 +38,17 @@ namespace esoft.ViewModel
             get { return selectedStatus; }
             set {
                 selectedStatus = value;
+                Performers = PerformerManager();
                 OnPropertyChanged("SelectedStatus");
+            }
+        }
+
+        private bool showFilter;
+        public bool ShowFilter {
+            get { return showFilter; }
+            set {
+                showFilter = value;
+                OnPropertyChanged("ShowMassage");
             }
         }
 
@@ -66,6 +77,10 @@ namespace esoft.ViewModel
                     List<Manager> managers = db.Manager.ToList();
                     List<Task> tasks = db.Task.ToList();
 
+                    if (SelectedStatus != "Все") {
+                        tasks = db.Task.Where(t => t.Taskstatus == SelectedStatus).ToList();
+                    }
+
                     var temp = tasks.Join(performers, t => t.Taskperformer, p => p.Login, (t, p) => new {
                         Manager = p.Manager,
                         TaskStatus = t.Taskstatus,
@@ -83,6 +98,7 @@ namespace esoft.ViewModel
                     return result;
                 }
                 else {
+                    ShowFilter = true;
                     IEnumerable<Manager> managers = db.Manager.Where(m => m.Login == Login); ;
                     List<Performer> performers = db.Performer.ToList();
                     List<Task> tasks = db.Task.ToList();
@@ -131,16 +147,6 @@ namespace esoft.ViewModel
         public TasksPageViewModel(string login) {
             Login = login;
             Performers = PerformerManager();
-        }
-
-        private RelayCommand filter;
-        public RelayCommand Filter {
-            get {
-                return filter ??
-                    (filter = new RelayCommand(obj => {
-                        Performers = PerformerManager();
-                    }));
-            }
         }
     }
 }

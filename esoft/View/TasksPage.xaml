@@ -19,7 +19,8 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="{Binding SelectedPerformer}"></TextBlock>
         <TextBlock Grid.Row="1" Text="{Binding SelectedStatus}"/>
-        <ComboBox Grid.Row="2" ItemsSource="{Binding PerformersList}" SelectedValue="{Binding SelectedPerformer}" />
+        <ComboBox Grid.Row="2" ItemsSource="{Binding PerformersList}" SelectedValue="{Binding SelectedPerformer}" Visibility="{Binding Path=ShowFilter, 
+                    Converter={StaticResource booleanToVisibilityConverter}}" />
         <ComboBox Grid.Row="3" ItemsSource="{Binding StatusList}" SelectedValue="{Binding SelectedStatus}" />
         <Button Grid.Row="4" Command="{Binding Filter}">OK</Button>
 
