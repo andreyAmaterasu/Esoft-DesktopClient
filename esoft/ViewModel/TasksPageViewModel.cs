@@ -48,7 +48,16 @@ namespace esoft.ViewModel
             get { return showFilter; }
             set {
                 showFilter = value;
-                OnPropertyChanged("ShowMassage");
+                OnPropertyChanged("ShowFilter");
+            }
+        }
+
+        private bool showCreateTask;
+        public bool ShowCreateTask {
+            get { return showCreateTask; }
+            set {
+                showCreateTask = value;
+                OnPropertyChanged("ShowCreateTask");
             }
         }
 
@@ -62,7 +71,9 @@ namespace esoft.ViewModel
                 List<Performer> performersList = Database.DatabaseManager.GetUsersWithType<Performer>();
 
                 foreach (Performer performer in performersList) {
-                    performers.Add($"{performer.Lastname} {performer.Firstname} {performer.Patronymic}");
+                    if (performer.Manager == Login) {
+                        performers.Add($"{performer.Lastname} {performer.Firstname} {performer.Patronymic}");
+                    }
                 }
                 performers.Add("Все");
                 return performers;
@@ -99,6 +110,7 @@ namespace esoft.ViewModel
                 }
                 else {
                     ShowFilter = true;
+                    ShowCreateTask = true;
                     IEnumerable<Manager> managers = db.Manager.Where(m => m.Login == Login); ;
                     List<Performer> performers = db.Performer.ToList();
                     List<Task> tasks = db.Task.ToList();

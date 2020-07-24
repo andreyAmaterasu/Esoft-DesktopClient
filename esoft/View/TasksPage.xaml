@@ -10,58 +10,84 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*" />
-            <RowDefinition Height="0.2*" />
-            <RowDefinition Height="0.2*" />
-            <RowDefinition Height="0.2*" />
-            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="65px" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="{Binding SelectedPerformer}"></TextBlock>
-        <TextBlock Grid.Row="1" Text="{Binding SelectedStatus}"/>
-        <ComboBox Grid.Row="2" ItemsSource="{Binding PerformersList}" SelectedValue="{Binding SelectedPerformer}" Visibility="{Binding Path=ShowFilter, 
-                    Converter={StaticResource booleanToVisibilityConverter}}" />
-        <ComboBox Grid.Row="3" ItemsSource="{Binding StatusList}" SelectedValue="{Binding SelectedStatus}" />
-        <Button Grid.Row="4" Command="{Binding Filter}">OK</Button>
 
-        <ListBox Grid.Row="5" ItemsSource="{Binding Path=Performers}" VerticalAlignment="Top" BorderThickness="0" 
+        <Border CornerRadius="10" Background="#dedede" Margin="22px 20px 22px 0">
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200px" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="200px" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Фильтрация списка" VerticalAlignment="Center" FontSize="14pt" Margin="5px 0 0 0" Foreground="#37474f" />
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Исполнитель:" VerticalAlignment="Center" FontSize="10pt" Foreground="#37474f"
+                               Visibility="{Binding Path=ShowFilter, Converter={StaticResource booleanToVisibilityConverter}}"/>
+                    <ComboBox Grid.Column="0" Margin="10px" Width="250px" ItemsSource="{Binding PerformersList}" SelectedValue="{Binding SelectedPerformer}" 
+                               Visibility="{Binding Path=ShowFilter, Converter={StaticResource booleanToVisibilityConverter}}" />
+                    <TextBlock Text="Статус задачи:" VerticalAlignment="Center" FontSize="10pt" Foreground="#37474f" />
+                    <ComboBox Grid.Column="1" Margin="10px" Width="200px" ItemsSource="{Binding StatusList}" SelectedValue="{Binding SelectedStatus}" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <StackPanel Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Margin="22px 22px 12px 0" Height="90px" Style="{StaticResource CreateTaskButton}" 
+                        Visibility="{Binding Path=ShowCreateTask, Converter={StaticResource booleanToVisibilityConverter}}">
+                    <Image Source="pack://application:,,,/Image/add.png" Height="40" />
+                </Button>
+            </Grid>
+            
+
+
+            <ListBox ItemsSource="{Binding Path=Performers}" VerticalAlignment="Top" BorderThickness="0" 
                  Background="Transparent" Margin="10" HorizontalContentAlignment="Stretch">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="{x:Type ListBoxItem}">
-                    <Setter Property="Background" Value="#d1ecff" />
-                    <Setter Property="Margin" Value="10" />
-                    <Style.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </Style.Resources>
-                </Style>
-            </ListBox.ItemContainerStyle>
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Columns="2" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Background" Value="#d1ecff" />
+                        <Setter Property="Margin" Value="10" />
+                        <Style.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Style.Resources>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
 
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Height="70px" Margin="10px">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding TaskName}" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" FontSize="16pt" Margin="0 0 0 -5px" Foreground="#37474f" />
-                        <TextBlock Text="{Binding TaskStatus}" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" FontSize="10pt" Foreground="#37474f" VerticalAlignment="Center"/>
-                        <TextBlock Text="{Binding Performer}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="10pt" Foreground="#546e7a" Margin="0 0 0 -6px" VerticalAlignment="Bottom" />
-                        <TextBlock Text="{Binding Manager}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="10pt" Foreground="#546e7a" VerticalAlignment="Bottom" />
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="70px" Margin="10px">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding TaskName}" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" FontSize="16pt" Margin="0 0 0 -5px" Foreground="#37474f" />
+                            <TextBlock Text="{Binding TaskStatus}" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" FontSize="10pt" Foreground="#37474f" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Performer}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="10pt" Foreground="#546e7a" Margin="0 0 0 -6px" VerticalAlignment="Bottom" />
+                            <TextBlock Text="{Binding Manager}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="10pt" Foreground="#546e7a" VerticalAlignment="Bottom" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+            
     </Grid>
 </Page>
