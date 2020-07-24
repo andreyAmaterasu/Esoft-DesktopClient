@@ -38,16 +38,19 @@
             <StackPanel Grid.Row="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Margin="20px 20px 10px 0" Height="90px" Style="{StaticResource CreateTaskButton}" 
+                    <Button Grid.Column="0" Margin="20px 20px 10px 0" Height="90px" Style="{StaticResource CreateTaskButton}">
+                        <Image Source="pack://application:,,,/Image/edit.png" Height="40" />
+                    </Button>
+                    <Button Grid.Column="1" Margin="10px 20px 20px 0" Height="90px" Style="{StaticResource CreateTaskButton}" 
                         Visibility="{Binding Path=ShowCreateTask, Converter={StaticResource booleanToVisibilityConverter}}">
                         <Image Source="pack://application:,,,/Image/add.png" Height="40" />
                     </Button>
                 </Grid>
 
-                <ItemsControl x:Name="MyItems" ItemsSource="{Binding Path=Performers}" Margin="10px">
+                <ItemsControl x:Name="Items" ItemsSource="{Binding Path=Performers}" Margin="10px">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="2" />
@@ -71,7 +74,7 @@
                                     <TextBlock Text="{Binding Performer}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="10pt" Foreground="#546e7a" Margin="0 0 0 -6px" VerticalAlignment="Bottom" />
                                     <TextBlock Text="{Binding Manager}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="10pt" Foreground="#546e7a" VerticalAlignment="Bottom" />
                                     <Button Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Background="Transparent" BorderThickness="0" Height="40px" Width="40px" HorizontalAlignment="Right"
-                                            Command="{Binding ElementName=MyItems, Path=DataContext.RemoveTask}" CommandParameter="{Binding TaskId}">
+                                            Command="{Binding ElementName=Items, Path=DataContext.RemoveTask}" CommandParameter="{Binding TaskId}">
                                         <Image Source="pack://application:,,,/Image/trash.png" Height="30px" />
                                     </Button>
                                 </Grid>

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Image\add.png" />
+    <None Remove="Image\edit.png" />
     <None Remove="Image\logo.png" />
     <None Remove="Image\profile.png" />
     <None Remove="Image\trash.png" />
@@ -24,6 +25,9 @@
 
   <ItemGroup>
     <Resource Include="Image\add.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\edit.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\logo.png">
