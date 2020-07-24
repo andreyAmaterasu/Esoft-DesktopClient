@@ -131,6 +131,7 @@ namespace esoft.ViewModel
                     }).ToList();
 
                     var result = temp.Join(tasks, te => te.PerformerLogin, ta => ta.Taskperformer, (te, ta) => new {
+                        TaskId = ta.Taskid,
                         TaskName = ta.Taskname,
                         TaskStatus = ta.Taskstatus,
                         Performer = te.Performer,
@@ -142,9 +143,17 @@ namespace esoft.ViewModel
             }
         }
 
-        //public List<Performer> Performers {
-        //    get { return Database.DatabaseManager.GetUsersWithType<Performer>(); }
-        //}
+        private RelayCommand removeTask;
+        public RelayCommand RemoveTask {
+            get {
+                return removeTask ??
+                    (removeTask = new RelayCommand(obj => {
+                        int taskId = int.Parse(obj.ToString());
+                        Database.DatabaseManager.RemoveTask(taskId);
+                        Performers = PerformerManager();
+                    }));
+            }
+        }
 
         public dynamic performers;
 

@@ -47,7 +47,7 @@
                     </Button>
                 </Grid>
 
-                <ItemsControl ItemsSource="{Binding Path=Performers}" Margin="10px">
+                <ItemsControl x:Name="MyItems" ItemsSource="{Binding Path=Performers}" Margin="10px">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="2" />
@@ -70,6 +70,10 @@
                                     <TextBlock Text="{Binding TaskStatus}" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" FontSize="10pt" Foreground="#37474f" VerticalAlignment="Center"/>
                                     <TextBlock Text="{Binding Performer}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="10pt" Foreground="#546e7a" Margin="0 0 0 -6px" VerticalAlignment="Bottom" />
                                     <TextBlock Text="{Binding Manager}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="10pt" Foreground="#546e7a" VerticalAlignment="Bottom" />
+                                    <Button Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Background="Transparent" BorderThickness="0" Height="40px" Width="40px" HorizontalAlignment="Right"
+                                            Command="{Binding ElementName=MyItems, Path=DataContext.RemoveTask}" CommandParameter="{Binding TaskId}">
+                                        <Image Source="pack://application:,,,/Image/trash.png" Height="30px" />
+                                    </Button>
                                 </Grid>
                             </Border>
                         </DataTemplate>

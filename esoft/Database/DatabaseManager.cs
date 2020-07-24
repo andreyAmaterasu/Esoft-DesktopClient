@@ -56,5 +56,13 @@ namespace esoft.Database
                 }
             }
         }
+
+        public static void RemoveTask(int taskId) {
+            using (esoftContext db = new esoftContext()) {
+                Task task = db.Task.Where(t => t.Taskid == taskId).FirstOrDefault();
+                db.Task.Remove(task);
+                db.SaveChanges();
+            }
+        }
     }
 }
