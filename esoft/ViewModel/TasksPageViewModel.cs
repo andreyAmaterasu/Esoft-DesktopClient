@@ -8,6 +8,8 @@ using esoft.Database;
 using System.Linq;
 using esoft.Models;
 using System.Security.Cryptography.Pkcs;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace esoft.ViewModel
 {
@@ -151,6 +153,19 @@ namespace esoft.ViewModel
                         int taskId = int.Parse(obj.ToString());
                         Database.DatabaseManager.RemoveTask(taskId);
                         Performers = PerformerManager();
+                    }));
+            }
+        }
+
+        private RelayCommand createTask;
+        public RelayCommand CreateTask {
+            get {
+                return createTask ??
+                    (createTask = new RelayCommand(obj => {
+                        CreateTaskPage createTaskPage = new CreateTaskPage();
+                        CreateTaskPageVIewModel createTaskPageVIewModel = new CreateTaskPageVIewModel(Login);
+                        createTaskPage.DataContext = createTaskPageVIewModel;
+                        MainPage.CurrentPage.Content = createTaskPage;
                     }));
             }
         }

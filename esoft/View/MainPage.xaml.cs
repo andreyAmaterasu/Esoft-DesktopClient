@@ -1,4 +1,5 @@
-﻿using esoft.ViewModel;
+﻿using esoft.Models;
+using esoft.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,10 +18,21 @@ namespace esoft.View
     /// <summary>
     /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class MainPage : Page
-    {
+    public partial class MainPage : Page {
         public MainPage() {
             InitializeComponent();
+
+            //TasksPage tasksPage = new TasksPage();
+            //TasksPageViewModel tasksPageViewModel = new TasksPageViewModel("user3");
+            //tasksPage.DataContext = tasksPageViewModel;
+            //this.ContainerForPages.Content = tasksPage;
+
+            //TasksPage.CurrentPage = this.ContainerForPages;
+            //PerformersPage.CurrentPage = this.ContainerForPages;
+
+            MainPage.CurrentPage = this.ContainerForPages;
         }
+
+        public static Frame CurrentPage { get; set; }
     }
 }

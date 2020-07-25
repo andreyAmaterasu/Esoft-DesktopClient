@@ -1,5 +1,4 @@
-﻿using esoft.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -15,11 +14,11 @@ using System.Windows.Shapes;
 namespace esoft.View
 {
     /// <summary>
-    /// Логика взаимодействия для TasksPage.xaml
+    /// Логика взаимодействия для CreateTaskPage.xaml
     /// </summary>
-    public partial class TasksPage : Page
+    public partial class CreateTaskPage : Page
     {
-        public TasksPage() {
+        public CreateTaskPage() {
             InitializeComponent();
         }
     }

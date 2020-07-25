@@ -9,14 +9,14 @@ namespace esoft.ViewModel
 {
     class PerformersPageViewModel : BaseViewModel
     {
-        private string login;
-        public string Login {
-            get { return login; }
-            set {
-                login = value;
-                OnPropertyChanged("Login");
-            }
-        }
+        //private string login;
+        //public string Login {
+        //    get { return login; }
+        //    set {
+        //        login = value;
+        //        OnPropertyChanged("Login");
+        //    }
+        //}
 
         private dynamic PerformerManager() {
             using (esoftContext db = new esoftContext()) {

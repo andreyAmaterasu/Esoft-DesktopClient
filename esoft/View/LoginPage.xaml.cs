@@ -61,13 +61,20 @@ namespace esoft.View
                       Useraccount useraccount = (Useraccount)Database.DatabaseManager.GetUserWithLogin<Useraccount>(Login);
                       if (useraccount != null && useraccount.Login == Login && useraccount.Password == Password) {
                           MainPage mainPage = new MainPage();
-                          MainPageViewModel mainPageViewModel = new MainPageViewModel();
-                          mainPageViewModel.Login = Login;
+                          MainPageViewModel mainPageViewModel = new MainPageViewModel(Login);
                           mainPage.DataContext = mainPageViewModel;
-                          mainPageViewModel.CurrentPage = new View.TasksPage();
-                          TasksPageViewModel tasksPageViewModel = new TasksPageViewModel(Login);
+
+                          TasksPage tasksPage = new View.TasksPage();
+                          TasksPageViewModel taskPageViewModel = new TasksPageViewModel(Login);
+                          tasksPage.DataContext = taskPageViewModel;
+                          MainPage.CurrentPage.Content = tasksPage;
+
+                          //mainPageViewModel.Login = Login;
+                          //mainPage.DataContext = mainPageViewModel;
+                          //mainPageViewModel.CurrentPage = new View.TasksPage();
+                          //TasksPageViewModel tasksPageViewModel = new TasksPageViewModel(Login);
                           //tasksPageViewModel.Login = Login;
-                          mainPageViewModel.DataContextForPages(tasksPageViewModel);
+                          //mainPageViewModel.DataContextForPages(tasksPageViewModel);
 
                           NavigationService.Navigate(mainPage);
                       }

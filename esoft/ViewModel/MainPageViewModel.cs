@@ -1,4 +1,5 @@
 ﻿using esoft.Models;
+using esoft.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,10 @@ namespace esoft.ViewModel
 {
     class MainPageViewModel : BaseViewModel
     {
+        public MainPageViewModel(string login) {
+            Login = login;
+        }
+
         private string login;
         private Page currentPage;
         public string Login {
@@ -49,8 +54,14 @@ namespace esoft.ViewModel
             get {
                 return toPerformer ??
                     (toPerformer = new RelayCommand(obj => {
-                        CurrentPage = new View.PerformersPage();
-                        DataContextForPages(new PerformersPageViewModel());
+                        PerformersPage performersPage = new PerformersPage();
+                        PerformersPageViewModel performersPageViewModel = new PerformersPageViewModel();
+                        MainPage.CurrentPage.Content = performersPage;
+                        //CurrentPage = new View.PerformersPage();
+                        //DataContextForPages(new PerformersPageViewModel());
+
+                        //PerformersPage.CurrentPage.Content = new PerformersPage();
+
                     }));
             }
         }
@@ -60,10 +71,14 @@ namespace esoft.ViewModel
             get {
                 return toTasks ??
                     (toTasks = new RelayCommand(obj => {
-                        CurrentPage = new View.TasksPage();
-                        TasksPageViewModel tasksPageContext = new TasksPageViewModel(Login);
-                        tasksPageContext.Login = Login;
-                        DataContextForPages(tasksPageContext);
+                        TasksPage tasksPage = new View.TasksPage();
+                        TasksPageViewModel taskPageViewModel = new TasksPageViewModel(Login);
+                        tasksPage.DataContext = taskPageViewModel;
+                        MainPage.CurrentPage.Content = tasksPage;
+                        //CurrentPage = new View.TasksPage();
+                        //TasksPageViewModel tasksPageContext = new TasksPageViewModel(Login);
+                        //tasksPageContext.Login = Login;
+                        //DataContextForPages(tasksPageContext);
                     }));
             }
         }
