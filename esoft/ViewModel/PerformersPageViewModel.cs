@@ -9,15 +9,6 @@ namespace esoft.ViewModel
 {
     class PerformersPageViewModel : BaseViewModel
     {
-        //private string login;
-        //public string Login {
-        //    get { return login; }
-        //    set {
-        //        login = value;
-        //        OnPropertyChanged("Login");
-        //    }
-        //}
-
         private dynamic PerformerManager() {
             using (esoftContext db = new esoftContext()) {
                 List<Performer> performers = db.Performer.ToList();
@@ -32,10 +23,6 @@ namespace esoft.ViewModel
                 return result;
             }
         }
-
-        //public List<Performer> Performers {
-        //    get { return Database.DatabaseManager.GetUsersWithType<Performer>(); }
-        //}
 
         public dynamic Performers {
             get { return PerformerManager(); }

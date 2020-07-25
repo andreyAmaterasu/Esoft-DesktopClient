@@ -60,21 +60,9 @@ namespace esoft.View
                   (entryCommand = new RelayCommand(obj => {
                       Useraccount useraccount = (Useraccount)Database.DatabaseManager.GetUserWithLogin<Useraccount>(Login);
                       if (useraccount != null && useraccount.Login == Login && useraccount.Password == Password) {
-                          MainPage mainPage = new MainPage();
-                          MainPageViewModel mainPageViewModel = new MainPageViewModel(Login);
-                          mainPage.DataContext = mainPageViewModel;
-
-                          TasksPage tasksPage = new View.TasksPage();
-                          TasksPageViewModel taskPageViewModel = new TasksPageViewModel(Login);
-                          tasksPage.DataContext = taskPageViewModel;
+                          MainPage mainPage = new MainPage(Login);
+                          TasksPage tasksPage = new View.TasksPage(Login);
                           MainPage.CurrentPage.Content = tasksPage;
-
-                          //mainPageViewModel.Login = Login;
-                          //mainPage.DataContext = mainPageViewModel;
-                          //mainPageViewModel.CurrentPage = new View.TasksPage();
-                          //TasksPageViewModel tasksPageViewModel = new TasksPageViewModel(Login);
-                          //tasksPageViewModel.Login = Login;
-                          //mainPageViewModel.DataContextForPages(tasksPageViewModel);
 
                           NavigationService.Navigate(mainPage);
                       }

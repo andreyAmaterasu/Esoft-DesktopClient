@@ -19,17 +19,9 @@ namespace esoft.View
     /// Логика взаимодействия для MainPage.xaml
     /// </summary>
     public partial class MainPage : Page {
-        public MainPage() {
+        public MainPage(string login) {
             InitializeComponent();
-
-            //TasksPage tasksPage = new TasksPage();
-            //TasksPageViewModel tasksPageViewModel = new TasksPageViewModel("user3");
-            //tasksPage.DataContext = tasksPageViewModel;
-            //this.ContainerForPages.Content = tasksPage;
-
-            //TasksPage.CurrentPage = this.ContainerForPages;
-            //PerformersPage.CurrentPage = this.ContainerForPages;
-
+            DataContext = new MainPageViewModel(login);
             MainPage.CurrentPage = this.ContainerForPages;
         }
 

@@ -19,8 +19,9 @@ namespace esoft.View
     /// </summary>
     public partial class TasksPage : Page
     {
-        public TasksPage() {
+        public TasksPage(string login) {
             InitializeComponent();
+            DataContext = new TasksPageViewModel(login);
         }
     }
 }

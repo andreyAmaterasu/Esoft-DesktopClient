@@ -15,9 +15,17 @@ namespace esoft.ViewModel
 {
     class TasksPageViewModel : BaseViewModel
     {
+        public TasksPageViewModel(string login) {
+            Login = login;
+            Performers = PerformerManager();
+        }
+
         private string login;
         private string selectedPerformer = "Все";
         private string selectedStatus = "Все";
+        private bool showFilter;
+        private bool showCreateTask;
+        public dynamic performers;
 
         public string Login {
             get { return login; }
@@ -45,7 +53,6 @@ namespace esoft.ViewModel
             }
         }
 
-        private bool showFilter;
         public bool ShowFilter {
             get { return showFilter; }
             set {
@@ -54,12 +61,19 @@ namespace esoft.ViewModel
             }
         }
 
-        private bool showCreateTask;
         public bool ShowCreateTask {
             get { return showCreateTask; }
             set {
                 showCreateTask = value;
                 OnPropertyChanged("ShowCreateTask");
+            }
+        }
+
+        public dynamic Performers {
+            get { return performers; }
+            set {
+                performers = value;
+                OnPropertyChanged("Performers");
             }
         }
 
@@ -168,21 +182,6 @@ namespace esoft.ViewModel
                         MainPage.CurrentPage.Content = createTaskPage;
                     }));
             }
-        }
-
-        public dynamic performers;
-
-        public dynamic Performers {
-            get { return performers; }
-            set {
-                performers = value;
-                OnPropertyChanged("Performers");
-            }
-        }
-
-        public TasksPageViewModel(string login) {
-            Login = login;
-            Performers = PerformerManager();
         }
     }
 }

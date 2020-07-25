@@ -55,13 +55,7 @@ namespace esoft.ViewModel
                 return toPerformer ??
                     (toPerformer = new RelayCommand(obj => {
                         PerformersPage performersPage = new PerformersPage();
-                        PerformersPageViewModel performersPageViewModel = new PerformersPageViewModel();
                         MainPage.CurrentPage.Content = performersPage;
-                        //CurrentPage = new View.PerformersPage();
-                        //DataContextForPages(new PerformersPageViewModel());
-
-                        //PerformersPage.CurrentPage.Content = new PerformersPage();
-
                     }));
             }
         }
@@ -71,14 +65,8 @@ namespace esoft.ViewModel
             get {
                 return toTasks ??
                     (toTasks = new RelayCommand(obj => {
-                        TasksPage tasksPage = new View.TasksPage();
-                        TasksPageViewModel taskPageViewModel = new TasksPageViewModel(Login);
-                        tasksPage.DataContext = taskPageViewModel;
+                        TasksPage tasksPage = new View.TasksPage(Login);
                         MainPage.CurrentPage.Content = tasksPage;
-                        //CurrentPage = new View.TasksPage();
-                        //TasksPageViewModel tasksPageContext = new TasksPageViewModel(Login);
-                        //tasksPageContext.Login = Login;
-                        //DataContextForPages(tasksPageContext);
                     }));
             }
         }
