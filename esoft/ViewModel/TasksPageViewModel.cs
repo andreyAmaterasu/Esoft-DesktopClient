@@ -26,6 +26,7 @@ namespace esoft.ViewModel
         private bool showFilter;
         private bool showCreateTask;
         public dynamic performers;
+        private bool showMessage;
 
         public string Login {
             get { return login; }
@@ -167,6 +168,7 @@ namespace esoft.ViewModel
                         int taskId = int.Parse(obj.ToString());
                         Database.DatabaseManager.RemoveTask(taskId);
                         Performers = PerformerManager();
+                        ShowMessage = true;
                     }));
             }
         }
@@ -190,6 +192,14 @@ namespace esoft.ViewModel
                         EditTaskPage editTaskPage = new EditTaskPage(Login);
                         MainPage.CurrentPage.Content = editTaskPage;
                     }));
+            }
+        }
+
+        public bool ShowMessage {
+            get { return showMessage; }
+            set {
+                showMessage = value;
+                OnPropertyChanged("ShowMessage");
             }
         }
     }

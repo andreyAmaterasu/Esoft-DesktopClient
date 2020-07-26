@@ -13,6 +13,7 @@ namespace esoft.ViewModel
 
         private string login;
         private Task editedTask = new Task();
+        private bool showMessage;
 
         public string Login {
             get { return login; }
@@ -54,12 +55,21 @@ namespace esoft.ViewModel
             }
         }
 
+        public bool ShowMessage {
+            get { return showMessage; }
+            set {
+                showMessage = value;
+                OnPropertyChanged("ShowMessage");
+            }
+        }
+
         private RelayCommand editTask;
         public RelayCommand EditTask {
             get {
                 return editTask ??
                     (editTask = new RelayCommand(obj => {
                         Database.DatabaseManager.Edit<Task>(EditedTask);
+                        ShowMessage = true;
                     }));
             }
         }

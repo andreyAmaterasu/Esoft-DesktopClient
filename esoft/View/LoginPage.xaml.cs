@@ -30,7 +30,7 @@ namespace esoft.View
 
         private string login;
         private string password;
-        private bool showMassage;
+        private bool showMessage;
         public string Login {
             get { return login; }
             set {
@@ -45,11 +45,11 @@ namespace esoft.View
                 OnPropertyChanged("Password");
             }
         }
-        public bool ShowMassage {
-            get { return showMassage; }
+        public bool ShowMessage {
+            get { return showMessage; }
             set {
-                showMassage = value;
-                OnPropertyChanged("ShowMassage");
+                showMessage = value;
+                OnPropertyChanged("ShowMessage");
             }
         }
 
@@ -58,6 +58,7 @@ namespace esoft.View
             get {
                 return entryCommand ??
                   (entryCommand = new RelayCommand(obj => {
+                      Password = inputPassword.Password;
                       Useraccount useraccount = (Useraccount)Database.DatabaseManager.GetUserWithLogin<Useraccount>(Login);
                       if (useraccount != null && useraccount.Login == Login && useraccount.Password == Password) {
                           MainPage mainPage = new MainPage(Login);
@@ -67,7 +68,7 @@ namespace esoft.View
                           NavigationService.Navigate(mainPage);
                       }
                       else {
-                          ShowMassage = true;
+                          ShowMessage = true;
                       }
                   }));
             }

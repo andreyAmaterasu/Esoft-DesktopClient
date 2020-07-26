@@ -20,14 +20,16 @@
             <StackPanel Height="370" Width="350">
                 <TextBlock Text="Вход" FontSize="20" Foreground="#37474f" FontWeight="Bold" Margin="25 35 25 25" />
                 <TextBlock Text="Логин" FontSize="14" Foreground="#546e7a" Margin="25 5 25 0" />
-                <TextBox x:Name="inputLogin" Height="40" Width="300" Margin="15" Padding="10 0 0 0" VerticalContentAlignment="Center" Text="{Binding Path=Login}"/>
+                <TextBox x:Name="inputLogin" Height="40" Width="300" Margin="15" Padding="10 0 0 0" VerticalContentAlignment="Center" Text="{Binding Login}"/>
                 <TextBlock Text="Пароль" FontSize="14" Foreground="#546e7a" Margin="25 5 25 0" />
-                <TextBox x:Name="inputPassword" Height="40" Width="300" Margin="15" Padding="10 0 0 0" VerticalContentAlignment="Center" Text="{Binding Path=Password}" />
+                <PasswordBox x:Name="inputPassword" Height="40" Width="300" Margin="15" Padding="10 0 0 0" VerticalContentAlignment="Center" />
                 <Button Style="{StaticResource TabButton}" Height="40" Width="300" Margin="15" Content="Войти" Command="{Binding EntryCommand}" />
             </StackPanel>
         </Border>
-        <Rectangle Grid.Row="2" Fill="#e36464" Height="60" VerticalAlignment="Bottom" Visibility="{Binding Path=ShowMassage, 
-                    Converter={StaticResource booleanToVisibilityConverter}}" />
 
+        <Border Grid.Row="2" Background="#e36464" Height="60" VerticalAlignment="Bottom" Visibility="{Binding Path=ShowMessage, 
+                    Converter={StaticResource booleanToVisibilityConverter}}">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Неверный логин или пароль" />
+        </Border>
     </Grid>
 </Page>

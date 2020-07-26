@@ -11,6 +11,7 @@ namespace esoft.ViewModel
         private string login;
         private Performer selectedPerformer;
         private Task createdTask = new Task();
+        private bool showMessage;
 
         public string Login {
             get { return login; }
@@ -60,7 +61,16 @@ namespace esoft.ViewModel
                 return createTask ??
                     (createTask = new RelayCommand(obj => {
                         Database.DatabaseManager.CreateTask(CreatedTask);
+                        ShowMessage = true;
                     }));
+            }
+        }
+
+        public bool ShowMessage {
+            get { return showMessage; }
+            set {
+                showMessage = value;
+                OnPropertyChanged("ShowMessage");
             }
         }
     } 

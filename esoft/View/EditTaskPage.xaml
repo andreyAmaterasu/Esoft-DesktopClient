@@ -11,10 +11,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Background="White" Margin="80px 30px" Padding="15px" CornerRadius="10">
+        <Border Grid.Row="0" Background="White" Height="400px" Margin="80px 30px" Padding="15px" CornerRadius="10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -98,6 +98,12 @@
             </Grid>
         </Border>
 
-        <Button Style="{StaticResource TabButton}" Height="40" Width="200" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Content="Сохранить" Command="{Binding EditTask}" />
+        <Button Style="{StaticResource TabButton}" Height="40" Width="200" VerticalAlignment="Top" Grid.Row="1" 
+                Grid.Column="0" Content="Сохранить" Command="{Binding EditTask}" />
+
+        <Border Grid.Row="2" Background="#65cf7e" Height="60" VerticalAlignment="Bottom" Visibility="{Binding Path=ShowMessage, 
+                    Converter={StaticResource booleanToVisibilityConverter}}">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Задача успешно отредактирована" />
+        </Border>
     </Grid>
 </Page>
