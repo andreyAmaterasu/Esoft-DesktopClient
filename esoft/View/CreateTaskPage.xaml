@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:esoft.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="1300"
       Title="CreateTaskPage">
 
     <Grid>
@@ -14,7 +14,7 @@
             <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Background="White" Margin="50px" Padding="30px" CornerRadius="10">
+        <Border Grid.Row="0" Background="White" Margin="80px 30px" Padding="15px" CornerRadius="10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -28,9 +28,9 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Row="0" Grid.Column="0">
-                    <TextBlock Text="Выбор исполнителя:" VerticalAlignment="Center" FontSize="10pt" Foreground="#37474f" />
-                    <ComboBox Margin="10px" Width="200px" ItemsSource="{Binding PerformersList}" SelectedValuePath="Login" SelectedValue="{Binding CreatedTask.Taskperformer}">
+                <StackPanel Grid.Row="0" Grid.Column="0" Margin="10px">
+                    <TextBlock Text="Выбор исполнителя:" Margin="0 0 0 5px" VerticalAlignment="Center" FontSize="10pt" Foreground="#37474f" />
+                    <ComboBox Margin="5px" Height="25px" Width="250px" ItemsSource="{Binding PerformersList}" SelectedValuePath="Login" SelectedValue="{Binding CreatedTask.Taskperformer}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock>
@@ -48,51 +48,59 @@
                 </StackPanel>
 
 
-                <StackPanel Grid.Row="1" Grid.Column="0">
-                    <TextBlock Text="Заголовок задачи" />
-                    <TextBox Text="{Binding CreatedTask.Taskname}" />
+                <StackPanel Grid.Row="1" Grid.Column="0" Margin="10px">
+                    <TextBlock Text="Заголовок задачи" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
+                    <TextBox Text="{Binding CreatedTask.Taskname}" Height="25px" BorderBrush="LightGray" VerticalContentAlignment="Center" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="1" Grid.Column="1">
-                    <TextBlock Text="Описание задачи" />
-                    <TextBox Text="{Binding CreatedTask.Aboutoftask}" BorderBrush="LightGray" />
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="10px">
+                    <TextBlock Text="Описание задачи" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
+                    <TextBox Text="{Binding CreatedTask.Aboutoftask}" BorderBrush="LightGray" Padding="5 0 0 0"
+                             Height="25px" VerticalContentAlignment="Center"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="2" Grid.Column="0">
-                    <TextBlock Text="Срок исполнения" />
-                    <TextBox Text="{Binding CreatedTask.Periodofexecution, ConverterCulture=RU, StringFormat=d}" GotFocus="ResetDefaiultValue" Tag="ДД.ММ.ГГГГ" Style="{StaticResource placeHolder}" />
+                <StackPanel Grid.Row="2" Grid.Column="0" Margin="10px">
+                    <TextBlock Text="Срок исполнения" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
+                    <TextBox Text="{Binding CreatedTask.Periodofexecution, ConverterCulture=RU, StringFormat=d}" 
+                             GotFocus="ResetDefaiultValue" Tag="ДД.ММ.ГГГГ" Style="{StaticResource placeHolder}"
+                             Height="25px" VerticalContentAlignment="Center"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="2" Grid.Column="1">
-                    <TextBlock Text="Дата выполнения" />
-                    <TextBox Text="{Binding CreatedTask.Dateofcompletion}" />
+                <StackPanel Grid.Row="2" Grid.Column="1" Margin="10px">
+                    <TextBlock Text="Дата выполнения" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
+                    <TextBox Text="{Binding CreatedTask.Dateofcompletion}" GotFocus="ResetDefaiultValue" 
+                             Tag="ДД.ММ.ГГГГ" Style="{StaticResource placeHolder}" Height="25px" VerticalContentAlignment="Center" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="3" Grid.Column="0">
-                    <TextBlock Text="Сложность задачи" />
-                    <TextBox Text="{Binding CreatedTask.Taskcomplexity}" />
+                <StackPanel Grid.Row="3" Grid.Column="0" Margin="10px">
+                    <TextBlock Text="Сложность задачи" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
+                    <TextBox Text="{Binding CreatedTask.Taskcomplexity}" GotFocus="ResetDefaiultValue" Tag="[0 : 50]" 
+                             Style="{StaticResource placeHolder}" Height="25px" VerticalContentAlignment="Center" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="3" Grid.Column="1">
-                    <TextBlock Text="Время на выполнение" />
-                    <TextBox Text="{Binding CreatedTask.Timetocompletethetask}" />
+                <StackPanel Grid.Row="3" Grid.Column="1" Margin="10px">
+                    <TextBlock Text="Время на выполнение" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
+                    <TextBox Text="{Binding CreatedTask.Timetocompletethetask}" GotFocus="ResetDefaiultValue" Tag="Минуты" 
+                             Style="{StaticResource placeHolder}" Height="25px" VerticalContentAlignment="Center" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="4" Grid.Column="0">
-                    <TextBlock Text="Статус задачи"/>
-                    <ComboBox Grid.Column="1" Margin="10px" Width="200px" ItemsSource="{Binding StatusList}" SelectedValue="{Binding CreatedTask.Taskstatus}" />
+                <StackPanel Grid.Row="4" Grid.Column="0" Margin="10px">
+                    <TextBlock Text="Статус задачи" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
+                    <ComboBox Grid.Column="1" Margin="5px" Width="250px" ItemsSource="{Binding StatusList}" Height="25px"
+                              SelectedValue="{Binding CreatedTask.Taskstatus}" />
                 </StackPanel>
 
-                <StackPanel Grid.Row="4" Grid.Column="1">
-                    <TextBlock Text="Характер задачи"/>
-                    <ComboBox Grid.Column="1" Margin="10px" Width="200px" ItemsSource="{Binding NatureOfTheTaskList}" SelectedValue="{Binding CreatedTask.Natureofthetask}" />
+                <StackPanel Grid.Row="4" Grid.Column="1" Margin="10px">
+                    <TextBlock Text="Характер задачи" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
+                    <ComboBox Grid.Column="1" Margin="5px" Width="250px" ItemsSource="{Binding NatureOfTheTaskList}" 
+                              SelectedValue="{Binding CreatedTask.Natureofthetask}" Height="25px" />
                 </StackPanel>
             </Grid>
         </Border>
-        
-        
 
-        <Button Grid.Row="1" Grid.Column="0" Content="Создать" Command="{Binding CreateTask}" />
+
+
+        <Button Style="{StaticResource TabButton}" Height="40" Width="200" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Content="Создать" Command="{Binding CreateTask}" />
         
 
         <!--<StackPanel>

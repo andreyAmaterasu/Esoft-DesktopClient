@@ -41,7 +41,7 @@
                                  Background="Transparent" 
                                  Panel.ZIndex="2"
                                  VerticalContentAlignment="Center"
-                                 Padding="10 0 0 0"
+                                 Padding="5 0 0 0"
                                  BorderBrush="LightGray"/>
                         <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
                             <TextBox.Style>
@@ -51,7 +51,7 @@
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
                                             <Setter Property="Foreground" Value="LightGray" />
-                                            <Setter Property="Padding" Value="10 0 0 0" />
+                                            <Setter Property="Padding" Value="5 0 0 0" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
