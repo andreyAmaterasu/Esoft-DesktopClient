@@ -30,60 +30,74 @@
 
                 <StackPanel Grid.Row="0" Grid.Column="0" Margin="10px">
                     <TextBlock Text="Выбор задачи:" Margin="0 0 0 5px" VerticalAlignment="Center" FontSize="10pt" Foreground="#37474f" />
-                    <ComboBox Margin="5px" Height="25px" Width="250px" ItemsSource="{Binding TasksList}" DisplayMemberPath="Taskname" SelectedValue="{Binding SelectedTask}" />
+                    <ComboBox Margin="5px" Height="25px" Width="250px" ItemsSource="{Binding TasksList}" DisplayMemberPath="Taskname" SelectedValue="{Binding EditedTask}" />
                 </StackPanel>
 
 
                 <StackPanel Grid.Row="1" Grid.Column="0" Margin="10px">
-                    <TextBlock Text="Заголовок задачи" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
-                    <TextBox Text="{Binding SelectedTask.Taskname}" Height="25px" BorderBrush="LightGray" VerticalContentAlignment="Center" />
+                    <TextBlock Text="Выбор исполнителя" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
+                    <ComboBox Margin="5px" Height="25px" Width="250px" ItemsSource="{Binding PerformersList}" SelectedValuePath="Login" SelectedValue="{Binding EditedTask.Taskperformer}" IsSynchronizedWithCurrentItem="True">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                            <Binding Path="Lastname"/>
+                                            <Binding Path="Firstname"/>
+                                            <Binding Path="Patronymic"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Grid.Column="1" Margin="10px">
                     <TextBlock Text="Описание задачи" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
-                    <TextBox Text="{Binding CreatedTask.Aboutoftask}" BorderBrush="LightGray" Padding="5 0 0 0"
+                    <TextBox Text="{Binding EditedTask.Aboutoftask}" BorderBrush="LightGray" Padding="5 0 0 0"
                              Height="25px" VerticalContentAlignment="Center"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="2" Grid.Column="0" Margin="10px">
                     <TextBlock Text="Срок исполнения" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
-                    <TextBox Text="{Binding CreatedTask.Periodofexecution, ConverterCulture=RU, StringFormat=d}" 
+                    <TextBox Text="{Binding EditedTask.Periodofexecution, ConverterCulture=RU, StringFormat=d}" 
                              Tag="ДД.ММ.ГГГГ" Style="{StaticResource placeHolder}"
                              Height="25px" VerticalContentAlignment="Center"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="2" Grid.Column="1" Margin="10px">
                     <TextBlock Text="Дата выполнения" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
-                    <TextBox Text="{Binding CreatedTask.Dateofcompletion}" 
+                    <TextBox Text="{Binding EditedTask.Dateofcompletion}" 
                              Tag="ДД.ММ.ГГГГ" Style="{StaticResource placeHolder}" Height="25px" VerticalContentAlignment="Center" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="3" Grid.Column="0" Margin="10px">
                     <TextBlock Text="Сложность задачи" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
-                    <TextBox Text="{Binding CreatedTask.Taskcomplexity}" Tag="[0 : 50]" 
+                    <TextBox Text="{Binding EditedTask.Taskcomplexity}" Tag="[0 : 50]" 
                              Style="{StaticResource placeHolder}" Height="25px" VerticalContentAlignment="Center" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="3" Grid.Column="1" Margin="10px">
                     <TextBlock Text="Время на выполнение" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
-                    <TextBox Text="{Binding CreatedTask.Timetocompletethetask}"  Tag="Минуты" 
+                    <TextBox Text="{Binding EditedTask.Timetocompletethetask}"  Tag="Минуты" 
                              Style="{StaticResource placeHolder}" Height="25px" VerticalContentAlignment="Center" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="4" Grid.Column="0" Margin="10px">
                     <TextBlock Text="Статус задачи" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
                     <ComboBox Grid.Column="1" Margin="5px" Width="250px" ItemsSource="{Binding StatusList}" Height="25px"
-                              SelectedValue="{Binding CreatedTask.Taskstatus}" />
+                              SelectedValue="{Binding EditedTask.Taskstatus}" />
                 </StackPanel>
 
                 <StackPanel Grid.Row="4" Grid.Column="1" Margin="10px">
                     <TextBlock Text="Характер задачи" Margin="0 0 0 5px" FontSize="10pt" Foreground="#37474f" />
                     <ComboBox Grid.Column="1" Margin="5px" Width="250px" ItemsSource="{Binding NatureOfTheTaskList}" 
-                              SelectedValue="{Binding CreatedTask.Natureofthetask}" Height="25px" />
+                              SelectedValue="{Binding EditedTask.Natureofthetask}" Height="25px" />
                 </StackPanel>
             </Grid>
         </Border>
 
-        <Button Style="{StaticResource TabButton}" Height="40" Width="200" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Content="Создать" Command="{Binding CreateTask}" />
+        <Button Style="{StaticResource TabButton}" Height="40" Width="200" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Content="Сохранить" Command="{Binding EditTask}" />
     </Grid>
 </Page>

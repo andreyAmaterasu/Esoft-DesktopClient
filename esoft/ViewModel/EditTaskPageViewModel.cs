@@ -12,8 +12,7 @@ namespace esoft.ViewModel
         }
 
         private string login;
-        private List<Task> tasksList;
-        private Task selectedTask = new Task();
+        private Task editedTask = new Task();
 
         public string Login {
             get { return login; }
@@ -23,23 +22,45 @@ namespace esoft.ViewModel
             }
         }
 
-        public List<Task> TasksList {
+        public IEnumerable<Task> TasksList {
             get {
                 var user = Database.DatabaseManager.GetUserWithLogin<Performer>(login);
                 if (user != null) {
                     return Database.DatabaseManager.GetTasksWithPerformer(Login);
                 }
                 else {
-                    return Database.DatabaseManager.GetTasksWithPerformer(Login);
+                    return Database.DatabaseManager.GetTasksWithManager(Login);
                 }
             }
         }
 
-        public Task SelectedTask {
-            get { return selectedTask; }
+        public List<Performer> PerformersList {
+            get { return Database.DatabaseManager.GetPerformersOfManager(Login); }
+        }
+
+        public List<string> StatusList {
+            get { return new List<string>() { "Запланирована", "Исполняется", "Выполнена", "Отменена" }; }
+        }
+
+        public List<string> NatureOfTheTaskList {
+            get { return new List<string>() { "Анализ и проектирование", "Установка оборудования", "Техническое обслуживание и сопровождение" }; }
+        }
+
+        public Task EditedTask {
+            get { return editedTask; }
             set {
-                selectedTask = value;
-                OnPropertyChanged("SelectedTask");
+                editedTask = value;
+                OnPropertyChanged("EditedTask");
+            }
+        }
+
+        private RelayCommand editTask;
+        public RelayCommand EditTask {
+            get {
+                return editTask ??
+                    (editTask = new RelayCommand(obj => {
+                        Database.DatabaseManager.Edit<Task>(EditedTask);
+                    }));
             }
         }
     }
