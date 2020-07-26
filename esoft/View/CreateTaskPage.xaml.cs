@@ -21,5 +21,12 @@ namespace esoft.View
         public CreateTaskPage() {
             InitializeComponent();
         }
+
+        private void ResetDefaiultValue(object sender, RoutedEventArgs e) {
+            TextBox field = (TextBox)sender;
+            if (field.Text == "0" || field.Text == DateTime.MinValue.ToShortDateString()) {
+                field.Text = "";
+            }
+        }
     }
 }

@@ -8,9 +8,9 @@ namespace esoft.Database
 {
     class DatabaseManager
     {
-        public static void Add(Useraccount ua) {
+        public static void CreateTask(Task task) {
             using (esoftContext db = new esoftContext()) {
-                db.Useraccount.Add(ua);
+                db.Task.Add(task);
                 db.SaveChanges();
             }
         }
