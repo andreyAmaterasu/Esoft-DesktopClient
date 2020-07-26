@@ -15,6 +15,18 @@ namespace esoft.Database
             }
         }
 
+        public static List<Task> GetTasksWithPerformer(string login) {
+            using (esoftContext db = new esoftContext()) {
+                return db.Task.Where(t => t.Taskperformer == login).ToList();
+            }
+        }
+
+        public static List<Task> GetTasksWithManager(string login) {
+            using (esoftContext db = new esoftContext()) {
+                return db.Task.Where(t => t.Taskperformer == login).ToList();
+            }
+        }
+
         public static List<T> GetUsersWithType<T>() {
             using (esoftContext db = new esoftContext()) {
                 if (typeof(T) == typeof(Useraccount)) {

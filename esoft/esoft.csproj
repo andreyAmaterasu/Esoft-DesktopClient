@@ -8,10 +8,10 @@
 
   <ItemGroup>
     <None Remove="Image\add.png" />
-    <None Remove="Image\edit.png" />
     <None Remove="Image\logo.png" />
     <None Remove="Image\profile.png" />
     <None Remove="Image\trash.png" />
+    <None Remove="Image\viewedit.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,9 +28,6 @@
     <Resource Include="Image\add.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Image\edit.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Image\logo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -38,6 +35,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Image\trash.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Image\viewedit.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

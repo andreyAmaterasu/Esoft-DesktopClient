@@ -41,8 +41,8 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Margin="20px 20px 10px 0" Height="90px" Style="{StaticResource CreateTaskButton}">
-                        <Image Source="pack://application:,,,/Image/edit.png" Height="40" />
+                    <Button Grid.Column="0" Margin="20px 20px 10px 0" Height="90px" Style="{StaticResource CreateTaskButton}" Command="{Binding EditTask}">
+                        <Image Source="pack://application:,,,/Image/viewedit.png" Height="40" />
                     </Button>
                     <Button Grid.Column="1" Margin="10px 20px 20px 0" Height="90px" Style="{StaticResource CreateTaskButton}" Command="{Binding CreateTask}"
                         Visibility="{Binding Path=ShowCreateTask, Converter={StaticResource booleanToVisibilityConverter}}">

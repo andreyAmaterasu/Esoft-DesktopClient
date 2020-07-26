@@ -176,10 +176,19 @@ namespace esoft.ViewModel
             get {
                 return createTask ??
                     (createTask = new RelayCommand(obj => {
-                        CreateTaskPage createTaskPage = new CreateTaskPage();
-                        CreateTaskPageVIewModel createTaskPageVIewModel = new CreateTaskPageVIewModel(Login);
-                        createTaskPage.DataContext = createTaskPageVIewModel;
+                        CreateTaskPage createTaskPage = new CreateTaskPage(Login);
                         MainPage.CurrentPage.Content = createTaskPage;
+                    }));
+            }
+        }
+
+        private RelayCommand editTask;
+        public RelayCommand EditTask {
+            get {
+                return editTask ??
+                    (editTask = new RelayCommand(obj => {
+                        EditTaskPage editTaskPage = new EditTaskPage(Login);
+                        MainPage.CurrentPage.Content = editTaskPage;
                     }));
             }
         }

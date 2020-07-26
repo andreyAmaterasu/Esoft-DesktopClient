@@ -1,4 +1,5 @@
-﻿using System;
+﻿using esoft.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,8 +19,9 @@ namespace esoft.View
     /// </summary>
     public partial class CreateTaskPage : Page
     {
-        public CreateTaskPage() {
+        public CreateTaskPage(string login) {
             InitializeComponent();
+            DataContext = new CreateTaskPageVIewModel(login);
         }
 
         private void ResetDefaiultValue(object sender, RoutedEventArgs e) {
