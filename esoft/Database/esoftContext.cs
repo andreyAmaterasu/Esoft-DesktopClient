@@ -2,6 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using esoft.Models;
+using System.IO;
+using System.Text.Json;
+using esoft.Model;
+using System.Text.Json.Serialization;
 
 namespace esoft.Database
 {
@@ -26,7 +30,10 @@ namespace esoft.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Host=10.0.0.3;Port=5432;Database=esoft;Username=andrey;Password=1469");
+                
+                var jsonString = File.ReadAllText("databasedata.json");
+                DatabaseConnect databaseConnect = JsonSerializer.Deserialize<DatabaseConnect>(jsonString);
+                optionsBuilder.UseNpgsql($"Host={databaseConnect.Host};Port={databaseConnect.Port};Database={databaseConnect.Database};Username={databaseConnect.Username};Password={databaseConnect.Password}");
             }
         }
 
